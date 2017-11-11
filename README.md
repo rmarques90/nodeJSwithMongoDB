@@ -2,4 +2,8 @@
 
 A little example of how Node JS can integrate with Mongo DB
 
-To run: `node index.js`
+1. Install dependencies
+`npm install`
+
+2. Run Application
+`npm run start`

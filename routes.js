@@ -9,6 +9,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/books', function (req, res) {
+    console.log('Requisição recebida - /books');
     Book.find({}).lean().exec(function(e,docs){
         res.json(docs);
         res.end();
@@ -16,6 +17,7 @@ router.get('/books', function (req, res) {
 });
 
 router.post('/newBook', function (req, res) {
+    console.log('Requisição recebida - /newBook');
     var newbook = new Book(req.body);
     newbook.save(function (err) {
         if (err) {

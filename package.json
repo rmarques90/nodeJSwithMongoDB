@@ -2,11 +2,18 @@
   "name": "nodeJSMongoTest",
   "version": "0.0.1",
   "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "3.3.4",
     "http": "0.0.0",
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }

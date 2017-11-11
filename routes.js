@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express();
 var db = require('./db');
+var Book = db.Mongoose.model('books', db.BookSchema, 'books');
 
 //rotas
 router.get('/', function (req, res) {
@@ -8,16 +9,14 @@ router.get('/', function (req, res) {
 });
 
 router.get('/books', function (req, res) {
-    var Books = db.Mongoose.model('books', db.BookSchema, 'books');
-    Books.find({}).lean().exec(function(e,docs){
+    Book.find({}).lean().exec(function(e,docs){
         res.json(docs);
         res.end();
     });
 });
 
 router.post('/newBook', function (req, res) {
-    var Book = db.Mongoose.model('books', db.BookSchema, 'books');
-    var newbook = new Book({ name: req.body.name, author: req.body.author });
+    var newbook = new Book(req.body);
     newbook.save(function (err) {
         if (err) {
             res.status(500).json({ error: err.message });
